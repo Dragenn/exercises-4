@@ -1,0 +1,109 @@
+// Clase base: DispositivoInteligente (SmartDevice)
+
+public class DispositivoInteligente {
+    private String marca;
+    private String modelo;
+    private int anioLanzamiento;
+
+    public DispositivoInteligente(String marca, String modelo, int anioLanzamiento) {        // constructor con los atributos.
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anioLanzamiento = anioLanzamiento;
+    }
+
+    public void realizarLlamada(String numero) {
+        System.out.println("Llamando a " + numero);
+    }
+
+    public void enviarMensaje(String numero, String mensaje) {
+        System.out.println("Enviando mensaje a " + numero + ": " + mensaje);
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public int getAnioLanzamiento() {
+        return anioLanzamiento;
+    }
+}
+
+
+
+// clases hijas Smartphone y Smartwatch
+
+
+public class TelefonoInteligente extends DispositivoInteligente {
+    private String sistemaOperativo;
+
+    public TelefonoInteligente(String marca, String modelo, int anioLanzamiento, String sistemaOperativo) {
+        super(marca, modelo, anioLanzamiento);
+        this.sistemaOperativo = sistemaOperativo;
+    }
+
+    public void navegarPorInternet(String url) {
+        System.out.println("Navegando por internet: " + url);
+    }
+
+    public String getSistemaOperativo() {
+        return sistemaOperativo;
+    }
+}
+
+
+
+public class RelojInteligente extends DispositivoInteligente {
+    private boolean tieneGPS;
+
+    public RelojInteligente(String marca, String modelo, int anioLanzamiento, boolean tieneGPS) {
+        super(marca, modelo, anioLanzamiento);
+        this.tieneGPS = tieneGPS;
+    }
+
+    public void mostrarNotificacion(String mensaje) {
+        System.out.println("Notificación: " + mensaje);
+    }
+
+    public boolean tieneGPS() {
+        return tieneGPS;
+    }
+}
+
+// Clase Main SmartPhone y SmartWatch, mostrando en consola.
+
+
+public class Main {
+    public static void main(String[] args) {
+        // Crear un objeto de SmartWatch
+        RelojInteligente smartWatch = new RelojInteligente("Apple", "Apple Watch Series 6", 2020, true);
+
+        // Acceder a las propiedades y métodos de SmartWatch
+        System.out.println("SmartWatch:");
+        System.out.println("Marca: " + smartWatch.getMarca());
+        System.out.println("Modelo: " + smartWatch.getModelo());
+        System.out.println("Año de Lanzamiento: " + smartWatch.getAnioLanzamiento());
+        System.out.println("Tiene GPS: " + smartWatch.tieneGPS());
+        smartWatch.mostrarNotificacion("¡Hola desde mi SmartWatch! Soy Hernando");
+
+        System.out.println();
+
+        // Crear un objeto de SmartPhone
+        TelefonoInteligente smartPhone = new TelefonoInteligente("Apple", "XI", 2020, " IOS 12");
+
+        // Acceder a las propiedades y métodos de SmartPhone
+        System.out.println("SmartPhone:");
+        System.out.println("Marca: " + smartPhone.getMarca());
+        System.out.println("Modelo: " + smartPhone.getModelo());
+        System.out.println("Año de Lanzamiento: " + smartPhone.getAnioLanzamiento());
+        System.out.println("Sistema Operativo: " + smartPhone.getSistemaOperativo());
+        smartPhone.realizarLlamada("69832469");
+        smartPhone.enviarMensaje("987667", "¡Hola desde mi SmartPhone! Soy Hernando ");
+        smartPhone.navegarPorInternet("www.dragenn.com");
+    }
+}
+
+
